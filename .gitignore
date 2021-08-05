@@ -1,6 +1,9 @@
 
-# Created by https://www.toptal.com/developers/gitignore/api/windows,macos,node
-# Edit at https://www.toptal.com/developers/gitignore?templates=windows,macos,node
+# Created by https://www.toptal.com/developers/gitignore/api/windows,macos,node,dotenv
+# Edit at https://www.toptal.com/developers/gitignore?templates=windows,macos,node,dotenv
+
+### dotenv ###
+.env
 
 ### macOS ###
 # General
@@ -104,7 +107,6 @@ web_modules/
 .yarn-integrity
 
 # dotenv environment variables file
-.env
 .env.test
 .env.production
 
@@ -177,4 +179,4 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.toptal.com/developers/gitignore/api/windows,macos,node
+# End of https://www.toptal.com/developers/gitignore/api/windows,macos,node,dotenv
