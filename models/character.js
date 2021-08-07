@@ -15,6 +15,9 @@ Character.init(
     character_name: {
       type: DataTypes.STRING,
     },
+    gender: {
+      type: DataTypes.STRING,
+    },
     race: {
       type: DataTypes.STRING,
     },
@@ -73,6 +76,9 @@ Character.init(
       type: DataTypes.INTEGER,
     },
     will: {
+      type: DataTypes.INTEGER,
+    },
+    str: {
       type: DataTypes.INTEGER,
     },
     dex: {
