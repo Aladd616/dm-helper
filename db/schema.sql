@@ -1,4 +1,4 @@
-DROP DATABASE IF EXISTS dnhelper_db;
+DROP DATABASE IF EXISTS dmhelper_db;
 
 -- CREATE DATABASE
 CREATE DATABASE dmhelper_db;
