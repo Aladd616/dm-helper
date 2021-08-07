@@ -1,4 +1,12 @@
 DROP DATABASE IF EXISTS dmhelper_db;
-
--- CREATE DATABASE
 CREATE DATABASE dmhelper_db;
+
+USE dmhelper_db;
+
+CREATE TABLE users (
+    id INTEGER AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    isDM BOOLEAN DEFAULT false,
+    email VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(60) NOT NULL
+);

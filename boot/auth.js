@@ -19,7 +19,7 @@ module.exports = function () {
         if (!user) {
           return done(null, false, { message: 'No user found.' });
         }
-        if (!user.validPassword(password)) {
+        if (!user.checkPassword(password)) {
           return done(null, false, { message: 'Password incorrect.' });
         }
         return done(null, user);
