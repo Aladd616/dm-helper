@@ -52,7 +52,7 @@ Character.init(
       type: DataTypes.INTEGER,
     },
     armorClass: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.TINYTEXT,
     },
     attacks: {
       type: DataTypes.TEXT,
@@ -96,11 +96,21 @@ Character.init(
     feats: {
       type: DataTypes.TEXT,
     },
+    spelllist: {
+      type: DataTypes.TEXT,
+    },
     equipment: {
       type: DataTypes.TEXT,
     },
     notes: {
       type: DataTypes.TEXT,
+    },
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "User",
+        key: "id",
+      },
     },
   },
   {
