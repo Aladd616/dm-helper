@@ -7,7 +7,9 @@
 const router = require('express').Router();
 
 // Gets homepage
-router.get('/', (req, res) => {});
+router.get('/', (req, res) => {
+  res.status(200).json({ message: 'Homepage goes here.' });
+});
 
 // Gets the login page
 // TODO: Rewrite this to render a web page and not
