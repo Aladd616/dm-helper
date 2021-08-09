@@ -43,6 +43,15 @@ router.post(
 
 // ------------------------------------------------------------------------------------------------
 // Log out a currently signed in user using /api/users/logout
-router.post('/logout', async (req, res, next) => {});
+router.post('/logout', async (req, res, next) => {
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
+  }
+});
+// ------------------------------------------------------------------------------------------------
 
 module.exports = router;
