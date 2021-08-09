@@ -7,6 +7,7 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 // Initialize secondary utilities
 const routes = require('./controllers');
+const cookieParser = require('cookie-parser');
 const sequelize = require('./config/connection');
 const helpers = require('./utils/helpers');
 const { urlencoded } = require('express');
@@ -42,14 +43,17 @@ app.engine(
   })
 );
 app.set('view engine', 'hbs');
+app.use(cookieParser());
 app.use(express.json());
 app.use(urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(routes);
 
 //Initialize passport
 app.use(passport.initialize());
-app.use(passport.session());
+app.use(passport.authenticate('session'));
+
+// Initialize routes
+app.use(routes);
 
 // Initiate the sequelize server
 sequelize.sync({ force: false }).then(() => {

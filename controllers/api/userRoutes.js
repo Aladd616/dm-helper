@@ -33,6 +33,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // ------------------------------------------------------------------------------------------------
+
 // Creates a new user using /api/users/
 router.post('/', async (req, res, next) => {
   try {
