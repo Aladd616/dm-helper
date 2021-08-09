@@ -1,5 +1,5 @@
-const { Model, DataTypes } = require("sequelize");
-const sequelize = require("../config/connection");
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../config/connection');
 
 class Ability extends Model {}
 
@@ -13,10 +13,10 @@ Ability.init(
     },
     type: {
       type: DataTypes.ENUM(
-        "spell",
-        "feat",
-        "special abilities",
-        "spell-like abilities"
+        'spell',
+        'feat',
+        'special abilities',
+        'spell-like abilities'
       ),
     },
     title: {
@@ -24,7 +24,7 @@ Ability.init(
       allowNull: false,
     },
     details: {
-      type: DataTypes.TINYTEXT,
+      type: DataTypes.STRING,
     },
     description: {
       type: DataTypes.TEXT,
@@ -34,7 +34,7 @@ Ability.init(
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: "Ability",
+    modelName: 'Ability',
   }
 );
 
