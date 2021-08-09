@@ -1,5 +1,5 @@
-const { Model, DataTypes } = require("sequelize");
-const sequelize = require("../config/connection");
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../config/connection');
 
 class Character extends Model {}
 
@@ -55,7 +55,7 @@ Character.init(
       type: DataTypes.INTEGER,
     },
     armorClass: {
-      type: DataTypes.TINYTEXT,
+      type: DataTypes.STRING,
     },
     attacks: {
       type: DataTypes.TEXT,
@@ -114,8 +114,8 @@ Character.init(
     user_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: "User",
-        key: "id",
+        model: 'User',
+        key: 'id',
       },
     },
   },
@@ -123,7 +123,7 @@ Character.init(
     sequelize,
     freezeTableName: true,
     underscore: true,
-    modelName: "character",
+    modelName: 'character',
   }
 );
 
