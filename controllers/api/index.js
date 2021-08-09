@@ -1,11 +1,16 @@
 // =============================================
 //  API Routes
 // ---------------------------------------------
-// Handles serving of dynamic resources via
-// handlebars templates
+// Handles serving of dynamic resources
 // =============================================
-const router = require("express").Router();
+const router = require('express').Router();
 
-router.get("/", (req, res) => {});
+const userRoutes = require('./userRoutes');
+const characterRoutes = require('./characterRoutes');
+const abilityRoutes = require('./abilityRoutes');
+
+router.use('/users/', userRoutes);
+router.use('/abilities/', abilityRoutes);
+router.use('/characters/', characterRoutes);
 
 module.exports = router;

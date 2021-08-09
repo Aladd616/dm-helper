@@ -4,8 +4,8 @@
 // Handles the MySQL database connection and
 // associated configuration
 // =============================================
-const Sequelize = require("sequelize");
-require("dotenv").config();
+const Sequelize = require('sequelize');
+require('dotenv').config();
 
 let sequelize;
 
@@ -20,7 +20,7 @@ if (process.env.JAWSDB_URL) {
     process.env.DB_PASSWORD,
     {
       host: process.env.HOST_URL,
-      dialect: "mysql",
+      dialect: 'mysql',
       port: 3306,
     }
   );
