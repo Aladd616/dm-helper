@@ -72,7 +72,6 @@ function processDice(dice) {
         for (let k = 0; k < dNum; k++) {
           single = roll(dSize);
           total = parseInt(total) + parseInt(single);
-          console.log(`Total is ${total}`);
           if (k == 0) {
             // May add span class such as <span class='dice-details'> for styling
             dice.string += ` ${single}`;
