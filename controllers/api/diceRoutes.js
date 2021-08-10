@@ -25,19 +25,70 @@ function sanitizeFormula(str) {
   return deconForm;
 }
 
-function processDice(dice) {
-  let temp, single, total; // Variables for various temporary data
+// Adds a result to the sum and prints it to the string
+function addToSum(dice, i, result) {
+  if (dice.formula[i - 1] === '+') {
+    dice.sum = parseInt(dice.sum) + parseInt(result);
+  } else if (dice.formula[i - 1] === '-') {
+    dice.sum = dice.sum - result;
+  } else {
+    dice.sum = result;
+  }
+}
 
+// Processes a deconstructed dice formula
+function processDice(dice) {
+  let temp, single, total;
   // loops through the deconstructed formula, handling each piece based on contents
   for (let i = 0; i < dice.formula.length; i++) {
     switch (true) {
+      // Translates + signs to the string ---------------------------------------------------------
       case /\+/.test(dice.formula[i]):
         dice.string += ' + ';
         break;
+
+      // translates - signs to the string ---------------------------------------------------------
       case /-/.test(dice.formula[i]):
         dice.string += ' - ';
+        break;
+
+      // handles simple numbers -------------------------------------------------------------------
+      case /^[0-9]+$/.test(dice.formula[i]):
+        addToSum(dice, i, dice.formula[i]);
+        dice.string += dice.formula[i];
+        break;
+
+      // XdY, rolls a die of Y sides X number of times, printing out individual rolls.
+      // such as 3d6 (1 + 4 + 3);------------------------------------------------------------------
+      case /d/.test(dice.formula[i]):
+        temp = dice.formula[i].split('d');
+        single = 0;
+        total = 0;
+        dNum = temp[0];
+        dSize = temp[1];
+
+        dice.string += `${dice.formula[i]} (`;
+
+        for (let k = 0; k < dNum; k++) {
+          single = roll(dSize);
+          total = parseInt(total) + parseInt(single);
+          console.log(`Total is ${total}`);
+          if (k == 0) {
+            // May add span class such as <span class='dice-details'> for styling
+            dice.string += ` ${single}`;
+          } else {
+            dice.string += ` + ${single}`;
+          }
+        }
+
+        dice.string += ` )`;
+
+        addToSum(dice, i, total);
+        break;
     }
   }
+  dice.string += ` = ${dice.sum}`;
+  return dice;
 }
 // ------------------------------------------------------------------------------------------------
 
