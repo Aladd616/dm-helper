@@ -26,10 +26,12 @@ const dice = (function () {
     let size = $(event.target).parents('.quick-dice-box').attr('data-dietype');
     let apiURL = `/api/dice/${size}`;
 
-    const result = await fetch(apiURL, {
+    const response = await fetch(apiURL, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     });
+
+    let result = await response.json();
 
     $(this).siblings().html(result);
 
@@ -56,7 +58,7 @@ const dice = (function () {
       return null;
     }
 
-    const response = await fetch('/dice', {
+    const response = await fetch('/api/dice', {
       method: 'POST',
       body: JSON.stringify({
         dice: formula,
@@ -64,10 +66,13 @@ const dice = (function () {
       headers: { 'Content-Type': 'application/json' },
     });
 
+    result = await response.json();
+
+    console.log(result);
     if (response.ok) {
-      printHistory(`${response}`);
+      printHistory(`${result.string}`);
     } else {
-      printHistory(`Something went wrong with the server. Error: ${response}`);
+      printHistory(`Something went wrong with the server. Error: ${result}`);
     }
   }
 
