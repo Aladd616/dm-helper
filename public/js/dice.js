@@ -36,7 +36,7 @@ const dice = (function () {
     $(this).siblings().html(result);
 
     printHistory(
-      `<span class="quick-dice-result">Quick Dice:</span> 1d${size} = ${result}`
+      `<span class="quick-dice-output">Quick Dice:</span> 1d${size} = ${result}`
     );
   }
 
