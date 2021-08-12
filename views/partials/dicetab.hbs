@@ -1,8 +1,10 @@
+{{! Quick Dice Header }}
 <div class='row'>
   <div class='col-md-12'>
     <h2>Quick Dice</h2>
   </div>
 </div>
+{{! Quick Dice Icons }}
 <div class='row d-flex justify-content-between'>
   <div class='col-md-1'>
     <div class='quick-dice-box' data-dietype='4'>
@@ -104,3 +106,39 @@
   </div>
 
 </div>
+{{! Quick Dice Icons }}
+<div class='advanced-dice mt-2'>
+  <h2>Advanced Dice Roller</h2>
+  <p>For complex rolls, such as multiple dice or dice with modifiers. Ex:
+    3d10+1d6+5</p>
+  <form class='form-group row'>
+    <div class='col-md-1'>
+      <button
+        type='submit'
+        class='btn btn-primary'
+        id='roll-button'
+      >Roll</button>
+    </div>
+    <div class='col-md'>
+      <input
+        type='text'
+        class='form-control'
+        id='dice-bar'
+        placeholder='3d10+1d6+5'
+      />
+    </div>
+  </form>
+</div>
+<div class='container mt-2'>
+  <h3>Roll History</h3>
+  <div class='card'>
+    <div class='card-header'></div>
+    <div class='card-body'>
+      <ul id='rollHistory'>
+
+      </ul>
+    </div>
+    <div class='card-footer'></div>
+  </div>
+</div>
+<script src='./js/dice.js'></script>

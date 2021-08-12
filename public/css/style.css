@@ -28,15 +28,22 @@ Login and Signup Pages
 Navigation
 ============================================= */
 .nav-item .active {
+  position: relative;
   color: black !important;
+  box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, 0.5);
+  z-index: 1;
 }
 
 /* =============================================
 Main Page
 ============================================= */
 .tab-pane {
+  position: relative;
   background-color: white;
   padding: 2em;
+  min-height: 80vh;
+  box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, 0.5);
+  z-index: 2;
 }
 
 /* =============================================
