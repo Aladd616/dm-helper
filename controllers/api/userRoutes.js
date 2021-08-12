@@ -5,7 +5,6 @@
 // =============================================
 const router = require('express').Router();
 const passport = require('passport');
-const authCheck = require('connect-ensure-login').ensureLoggedIn;
 const { User } = require('../../models');
 
 // ------------------------------------------------------------------------------------------------

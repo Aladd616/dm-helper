@@ -5,18 +5,22 @@
 // handlebars templates
 // =============================================
 const router = require('express').Router();
+const authCheck = require('connect-ensure-login').ensureLoggedIn;
 
 // ------------------------------------------------------------------------------------------------
 // Gets homepage
-router.get('/', (req, res) => {
-  res.status(200).json({ message: 'Homepage goes here.' });
+router.get('/', authCheck('/login'), (req, res) => {
+  res.render('home');
 });
 // ------------------------------------------------------------------------------------------------
 
 // ------------------------------------------------------------------------------------------------
 // Gets the login page
 router.get('/login', (req, res) => {
-  res.status(200).json({ message: 'Login page goes here.' });
+  if (req.session.loggedIn) {
+    res.redirect('/', { user: req.user });
+  }
+  res.render('login');
 });
 // ------------------------------------------------------------------------------------------------
 

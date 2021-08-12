@@ -15,6 +15,7 @@ router.post(
     failureRedirect: '/login',
   }),
   (req, res, next) => {
+    console.log('success');
     res.json({ message: 'Success!' });
   }
 );

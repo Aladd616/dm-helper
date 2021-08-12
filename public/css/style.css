@@ -1,0 +1,25 @@
+/* =============================================
+Imports and Universal CSS
+============================================= */
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Neucha&family=Patrick+Hand&display=swap');
+
+body {
+  background-color: black;
+  background-image: url('../images/wood-board.jpg');
+}
+
+h1 {
+  color: rgb(34, 20, 1);
+  font-family: 'Neucha', cursive;
+}
+
+/* =============================================
+Login and Signup Pages
+============================================= */
+#login-box {
+  background-color: rgb(255, 251, 246);
+  margin-top: 30vh;
+  padding: 5em;
+  box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, 0.5);
+}
