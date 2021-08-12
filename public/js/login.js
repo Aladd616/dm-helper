@@ -18,18 +18,21 @@ const login = (function () {
     const response = await fetch('/auth/login', {
       method: 'POST',
       body: JSON.stringify({
-        username: userData.username,
+        email: userData.username,
         password: userData.password,
       }),
       headers: { 'Content-Type': 'application/json' },
     });
 
-    console.log(response.json());
+    if (response.ok) {
+      document.location.replace('/');
+    } else {
+      document.location.replace('/login?error=BadLogin');
+    }
   }
 
   function init() {
     $('#login-button').on('click', submit);
-    console.log('Script loaded!');
   }
 
   return {

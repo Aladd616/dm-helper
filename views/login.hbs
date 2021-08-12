@@ -4,6 +4,9 @@
       <h1>Welcome to DM Helper!</h1>
       <p>Please log in to access character sheets, dice rollers, and more!</p>
     </div>
+    {{#if error}}
+      <div class='alert alert-danger'>{{error}}</div>
+    {{/if}}
     <div class='mt-5'>
       <input class='form-control mb-3' type='email' id='username-field' />
       <input class='form-control mb-3' type='password' id='password-field' />
