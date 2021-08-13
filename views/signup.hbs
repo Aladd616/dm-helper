@@ -5,11 +5,21 @@
       <p>Create an account to help us run your game!</p>
     </div>
     <div class='mt-5'>
+      <label for='username-field'>Display Name:</label>
+      <input class='form-control mb-3' type='text' id='name-field' />
+      <label for='username-field'>Email:</label>
       <input class='form-control mb-3' type='email' id='username-field' />
+      <label for='password-field'>Password:</label>
       <input class='form-control mb-3' type='password' id='password-field' />
+      <label for='password-field'>Re-enter Password:</label>
+      <input
+        class='form-control mb-3'
+        type='password'
+        id='check-password-field'
+      />
       <div class='login-box d-flex justify-content-between'>
         <button class='btn btn-primary' id='login-button'>Login</button>
-        <a href='/signup'><p>Not registered? Create an account!</p></a>
+        <a href='/login'><p>Have an account? Login!</p></a>
       </div>
     </div>
   </div>

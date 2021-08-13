@@ -23,6 +23,13 @@ Login and Signup Pages
   box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, 0.5);
 }
 
+#signup-box {
+  background-color: white;
+  margin-top: 20vh;
+  padding: 5em;
+  box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, 0.5);
+}
+
 /* =============================================
 Navigation
 ============================================= */
