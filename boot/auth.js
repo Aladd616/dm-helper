@@ -9,7 +9,7 @@ const stratLocal = require('passport-local');
 const { User } = require('../models');
 
 passport.use(
-  'local-login',
+  'local',
   new stratLocal(
     {
       usernameField: 'email',
