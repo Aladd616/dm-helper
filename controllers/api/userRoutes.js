@@ -34,26 +34,26 @@ router.get('/:id', async (req, res) => {
 // ------------------------------------------------------------------------------------------------
 
 // Creates a new user using /api/users/
-router.post('/', async (req, res, next) => {
-  try {
-    const newUser = await User.create({
-      name: req.body.name,
-      email: req.body.email,
-      password: req.body.password,
-      isDM: req.body.isDM,
-    });
-
-    req.session.save(() => {
-      req.session.user_id = newUser.id;
-      req.session.loggedIn = true;
-      req.session.name = newUser.name;
-
-      res.status(200).json(newUser);
-    });
-  } catch (err) {
-    res.status(500).json(err);
+router.post(
+  '/',
+  passport.authenticate('local-signup', {
+    successRedirect: '/',
+    failureRedirect: '/signup',
+  }),
+  async (req, res, next) => {
+    // console.log(req.body);
+    // try {
+    //   const newUser = await User.create({
+    //     name: req.body.name,
+    //     email: req.body.email,
+    //     password: req.body.password,
+    //     isDM: req.body.isDM,
+    //   });
+    // } catch (err) {
+    //   res.status(500).json(err);
+    // }
   }
-});
+);
 
 // ------------------------------------------------------------------------------------------------
 // Logs in a previously created user using /api/users/login

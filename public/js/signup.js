@@ -8,7 +8,7 @@ const signup = (function () {
     let name = $('#name-field').val().trim();
     let email = $('#username-field').val().trim();
     let password = $('#password-field').val().trim();
-    let dm = $('#dm-check-box').prop('checked');
+    let dm = $('input[name="dmCheckbox"]:checked').val();
 
     return { name: name, email: email, password: password, isDM: dm };
   }
@@ -22,7 +22,7 @@ const signup = (function () {
       body: JSON.stringify({
         name: userData.name,
         isDM: userData.isDM,
-        email: userData.username,
+        email: userData.email,
         password: userData.password,
       }),
       headers: { 'Content-Type': 'application/json' },

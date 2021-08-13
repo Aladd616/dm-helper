@@ -5,11 +5,11 @@
 // handlebars templates
 // =============================================
 const router = require('express').Router();
-const authCheck = require('connect-ensure-login').ensureLoggedIn;
+const authBlock = require('../utils/auth');
 
 // ------------------------------------------------------------------------------------------------
 // Gets homepage
-router.get('/', authCheck('/login'), async (req, res) => {
+router.get('/', authBlock, async (req, res) => {
   res.render('home', { user: req.user });
 });
 // ------------------------------------------------------------------------------------------------
@@ -18,9 +18,14 @@ router.get('/', authCheck('/login'), async (req, res) => {
 // Gets the login page
 router.get('/login', async (req, res) => {
   if (req.query.error) {
-    res.render('login', { error: 'Unknown username or password combination.' });
-  }
-  if (req.session.loggedIn) {
+    if (req.query.error == 'noLogin') {
+      res.render('login', { error: 'You must log in first!' });
+    } else {
+      res.render('login', {
+        error: 'Unknown username or password combination.',
+      });
+    }
+  } else if (req.session.loggedIn) {
     res.redirect('/');
   } else {
     res.render('login');

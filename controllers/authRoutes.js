@@ -14,10 +14,7 @@ router.post(
     successReturnToOrRedirect: '/',
     failureRedirect: '/login?error=BadLogin',
   }),
-  (req, res, next) => {
-    console.log('success');
-    res.json({ message: 'Success!' });
-  }
+  (req, res, next) => {}
 );
 // ------------------------------------------------------------------------------------------------
 
