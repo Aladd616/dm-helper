@@ -17,8 +17,29 @@
         type='password'
         id='check-password-field'
       />
+      <div class='dm-checkbox d-flex justify-content-evenly'>
+        <div class='form-check'>
+          <input
+            class='form-check-input'
+            type='radio'
+            name='dmCheckbox'
+            id='#dm-check-box'
+          />
+          <label class='form-check-label' for='dm-check-box'>I will be the DM.</label>
+        </div>
+        <div class='form-check'>
+          <input
+            class='form-check-input'
+            type='radio'
+            name='dmCheckbox'
+            id='#player-check-box'
+            checked
+          />
+          <label class='form-check-label' for='dm-check-box'>I will be a player.</label>
+        </div>
+      </div>
       <div class='login-box d-flex justify-content-between'>
-        <button class='btn btn-primary' id='login-button'>Login</button>
+        <button class='btn btn-primary' id='signup-button'>Create Account</button>
         <a href='/login'><p>Have an account? Login!</p></a>
       </div>
     </div>
