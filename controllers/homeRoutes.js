@@ -5,12 +5,19 @@
 // handlebars templates
 // =============================================
 const router = require('express').Router();
+const { Character } = require('../models');
 const authBlock = require('../utils/auth');
 
 // ------------------------------------------------------------------------------------------------
 // Gets homepage
 router.get('/', authBlock, async (req, res) => {
-  res.render('home', { user: req.user });
+  try {
+    const charList = await Character.findAll();
+
+    const charData = charList.map((char) => char.get({ plain: true }));
+    console.log(charData);
+    res.render('home', { user: req.user, characters: charData });
+  } catch (err) {}
 });
 // ------------------------------------------------------------------------------------------------
 
