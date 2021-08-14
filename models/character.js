@@ -14,6 +14,7 @@ Character.init(
 
     character_name: {
       type: DataTypes.STRING,
+      allowNull: false,
     },
     gender: {
       type: DataTypes.STRING,
@@ -40,19 +41,19 @@ Character.init(
       type: DataTypes.STRING,
     },
     hp: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
     },
     initiative: {
       type: DataTypes.INTEGER,
     },
     speed: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
     },
     space: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
     },
     reach: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
     },
     armorClass: {
       type: DataTypes.STRING,
