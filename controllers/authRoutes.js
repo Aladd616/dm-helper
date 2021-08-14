@@ -12,11 +12,9 @@ router.post(
   '/login',
   passport.authenticate('local', {
     successReturnToOrRedirect: '/',
-    failureRedirect: '/login',
+    failureRedirect: '/login?error=BadLogin',
   }),
-  (req, res, next) => {
-    res.json({ message: 'Success!' });
-  }
+  (req, res, next) => {}
 );
 // ------------------------------------------------------------------------------------------------
 

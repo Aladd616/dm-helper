@@ -1,0 +1,68 @@
+/* =============================================
+Imports and Universal CSS
+============================================= */
+@import url('https://fonts.googleapis.com/css2?family=Neucha&family=Patrick+Hand&display=swap');
+
+body {
+  background-color: black;
+  background-image: url('../images/wood-board.jpg');
+}
+
+h1 {
+  color: rgb(34, 20, 1);
+  font-family: 'Neucha', cursive;
+}
+
+/* =============================================
+Login and Signup Pages
+============================================= */
+#login-box {
+  background-color: white;
+  margin-top: 30vh;
+  padding: 5em;
+  box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, 0.5);
+}
+
+#signup-box {
+  background-color: white;
+  margin-top: 20vh;
+  padding: 5em;
+  box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, 0.5);
+}
+
+/* =============================================
+Navigation
+============================================= */
+.nav-item .active {
+  position: relative;
+  color: black !important;
+  box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+/* =============================================
+Main Page
+============================================= */
+.tab-pane {
+  position: relative;
+  background-color: white;
+  padding: 2em;
+  min-height: 80vh;
+  box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+
+/* =============================================
+Dice Tab
+============================================= */
+.quick-dice-image {
+  max-height: 60px;
+}
+
+.quick-dice-output {
+  color: gray;
+}
+.quick-dice-result {
+  font-size: 1.5em;
+  font-family: 'Patrick Hand', cursive;
+}

@@ -1,0 +1,51 @@
+<div class='container'>
+  <div id='signup-box'>
+    <div id='signup-header' class='text-center'>
+      <h1>Create an Account!</h1>
+      <p>Create an account to help us run your game!</p>
+    </div>
+    <div class='mt-5'>
+      <label for='username-field'>Display Name:</label>
+      <input class='form-control mb-3' type='text' id='name-field' />
+      <label for='username-field'>Email:</label>
+      <input class='form-control mb-3' type='email' id='username-field' />
+      <label for='password-field'>Password:</label>
+      <input class='form-control mb-3' type='password' id='password-field' />
+      <label for='password-field'>Re-enter Password:</label>
+      <input
+        class='form-control mb-3'
+        type='password'
+        id='check-password-field'
+      />
+      <div class='dm-checkbox d-flex justify-content-evenly'>
+        <div class='form-check'>
+          <input
+            class='form-check-input'
+            type='radio'
+            name='dmCheckbox'
+            id='#dm-check-box'
+            value='true'
+          />
+          <label class='form-check-label' for='dm-check-box'>I will be the DM.</label>
+        </div>
+        <div class='form-check'>
+          <input
+            class='form-check-input'
+            type='radio'
+            name='dmCheckbox'
+            id='#player-check-box'
+            value='false'
+            checked
+          />
+          <label class='form-check-label' for='dm-check-box'>I will be a player.</label>
+        </div>
+      </div>
+      <div class='login-box d-flex justify-content-between'>
+        <button class='btn btn-primary' id='signup-button'>Create Account</button>
+        <a href='/login'><p>Have an account? Login!</p></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src='./js/signup.js'></script>

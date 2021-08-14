@@ -1,0 +1,144 @@
+{{! Quick Dice Header }}
+<div class='row'>
+  <div class='col-md-12'>
+    <h2>Quick Dice</h2>
+  </div>
+</div>
+{{! Quick Dice Icons }}
+<div class='row d-flex justify-content-between'>
+  <div class='col-md-1'>
+    <div class='quick-dice-box' data-dietype='4'>
+      <div class='quick-dice-button text-center'>
+        <img
+          src='./images/quickdice/d4.png'
+          class='quick-dice-image'
+          alt='d4'
+        />
+      </div>
+      <div class='quick-dice-result mt-3 text-center'>
+        -
+      </div>
+    </div>
+  </div>
+  <div class='col-md-1'>
+    <div class='quick-dice-box' data-dietype='6'>
+      <div class='quick-dice-button text-center'>
+        <img
+          src='./images/quickdice/d6.png'
+          class='quick-dice-image'
+          alt='d6'
+        />
+      </div>
+      <div class='quick-dice-result mt-3 text-center'>
+        -
+      </div>
+    </div>
+  </div>
+  <div class='col-md-1'>
+    <div class='quick-dice-box' data-dietype='8'>
+      <div class='quick-dice-button text-center'>
+        <img
+          src='./images/quickdice/d8.png'
+          class='quick-dice-image'
+          alt='d8'
+        />
+      </div>
+      <div class='quick-dice-result mt-3 text-center'>
+        -
+      </div>
+    </div>
+  </div>
+  <div class='col-md-1'>
+    <div class='quick-dice-box' data-dietype='10'>
+      <div class='quick-dice-button text-center'>
+        <img
+          src='./images/quickdice/d10.png'
+          class='quick-dice-image'
+          alt='d10'
+        />
+      </div>
+      <div class='quick-dice-result mt-3 text-center'>
+        -
+      </div>
+    </div>
+  </div>
+  <div class='col-md-1'>
+    <div class='quick-dice-box' data-dietype='12'>
+      <div class='quick-dice-button text-center'>
+        <img
+          src='./images/quickdice/d12.png'
+          class='quick-dice-image'
+          alt='d12'
+        />
+      </div>
+      <div class='quick-dice-result mt-3 text-center'>
+        -
+      </div>
+    </div>
+  </div>
+  <div class='col-md-1'>
+    <div class='quick-dice-box' data-dietype='20'>
+      <div class='quick-dice-button text-center'>
+        <img
+          src='./images/quickdice/d20.png'
+          class='quick-dice-image'
+          alt='d20'
+        />
+      </div>
+      <div class='quick-dice-result mt-3 text-center'>
+        -
+      </div>
+    </div>
+  </div>
+  <div class='col-md-1'>
+    <div class='quick-dice-box' data-dietype='100'>
+      <div class='quick-dice-button text-center'>
+        <img
+          src='./images/quickdice/d100.png'
+          class='quick-dice-image'
+          alt='d100'
+        />
+      </div>
+      <div class='quick-dice-result mt-3 text-center'>
+        -
+      </div>
+    </div>
+  </div>
+
+</div>
+{{! Quick Dice Icons }}
+<div class='advanced-dice mt-2'>
+  <h2>Advanced Dice Roller</h2>
+  <p>For complex rolls, such as multiple dice or dice with modifiers. Ex:
+    3d10+1d6+5</p>
+  <form class='form-group row'>
+    <div class='col-md-1'>
+      <button
+        type='submit'
+        class='btn btn-primary'
+        id='roll-button'
+      >Roll</button>
+    </div>
+    <div class='col-md'>
+      <input
+        type='text'
+        class='form-control'
+        id='dice-bar'
+        placeholder='3d10+1d6+5'
+      />
+    </div>
+  </form>
+</div>
+<div class='container mt-2'>
+  <h3>Roll History</h3>
+  <div class='card'>
+    <div class='card-header'></div>
+    <div class='card-body'>
+      <ul id='rollHistory'>
+
+      </ul>
+    </div>
+    <div class='card-footer'></div>
+  </div>
+</div>
+<script src='./js/dice.js'></script>

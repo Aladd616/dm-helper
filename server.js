@@ -28,9 +28,6 @@ const sess = {
 
 app.use(session(sess));
 
-// Run boot scripts
-require('./boot/auth')();
-
 // Set up addons
 app.engine(
   'hbs',
@@ -51,6 +48,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 //Initialize passport
 app.use(passport.initialize());
 app.use(passport.authenticate('session'));
+// Run boot scripts
+require('./boot/auth');
 
 // Initialize routes
 app.use(routes);

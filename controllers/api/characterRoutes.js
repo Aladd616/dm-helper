@@ -1,8 +1,8 @@
 // =============================================
-//  Ability Routes
+//  Character Routes
 // ---------------------------------------------
-// Handles serving of spells, feats, and other
-// power related data
+// Handles creation, deletion, and updates of
+
 // =============================================
 const router = require('express').Router();
 const { Character } = require('../../models');
@@ -33,10 +33,11 @@ router.get('/:id', async (req, res) => {
     res.status(500).json(err);
   }
 });
+// ------------------------------------------------------------------------------------------------
 
+// ------------------------------------------------------------------------------------------------
+// create a new character
 router.post('/', async (req, res) => {
-  // create a new character
-
   try {
     const characterData = await Character.create(req.body);
     res.status(200).json(characterData);
@@ -45,8 +46,10 @@ router.post('/', async (req, res) => {
   }
 });
 // ------------------------------------------------------------------------------------------------
+
+// ------------------------------------------------------------------------------------------------
+// update a tag's name by its `id` value
 router.put('/:id', async (req, res) => {
-  // update a tag's name by its `id` value
   try {
     const character = await Character.update(req.body, {
       where: {
@@ -59,9 +62,11 @@ router.put('/:id', async (req, res) => {
   }
   res.json(character);
 });
+// ------------------------------------------------------------------------------------------------
 
+// ------------------------------------------------------------------------------------------------
+// delete on tag by its `id`
 router.delete('/:id', async (req, res) => {
-  // delete on tag by its `id`
   try {
     const characterData = await Character.destroy({
       where: {
@@ -79,4 +84,6 @@ router.delete('/:id', async (req, res) => {
     res.status(500).json(err);
   }
 });
+// ------------------------------------------------------------------------------------------------
+
 module.exports = router;
