@@ -24,7 +24,7 @@ Ability.init(
       allowNull: false,
     },
     details: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
     },
     description: {
       type: DataTypes.TEXT,
