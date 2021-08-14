@@ -2,9 +2,9 @@
   <div id='ability-index-box' class='col-md-2'>
     <h2>Index</h2>
     <ul id='ability-list' class='list-group'>
-        <li class='list-group-item' data-id='create'>CREATE NEW ABILITY</li>
+        <li class='list-group-item ability-entry' data-id='create'>CREATE NEW ABILITY</li>
       {{#each abilities}}
-        <li class='list-group-item' data-id='{{id}}'>{{title}}</li>
+        <li class='list-group-item ability-entry' data-id='{{id}}'>{{title}}</li>
       {{/each}}
     </ul>
   </div>
@@ -23,8 +23,8 @@
         </span>
       </div>
       <div class='col-md-3 d-flex justify-contents-end'>
-        <button id='update-button' class='btn btn-info'>Save Changes</button>
-        <button id='delete-button' class='btn btn-danger'>Delete Ability</button>
+        <button id='update-ability-button' class='btn btn-info'>Save Changes</button>
+        <button id='delete-ability-button' class='btn btn-danger'>Delete Ability</button>
       </div>
     </div>
     <div class="ability-stat-block">
@@ -39,3 +39,4 @@
         ></textarea>
     </div>
   </div>
+<script src='./js/abilitysheet.js'></script>

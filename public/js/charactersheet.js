@@ -4,8 +4,7 @@
 // Handles display and storage of character data
 // ====================================================
 const sheet = (function () {
-  // sets up event handlers on page load
-
+  // grabs data from the fields and assembles an object
   function getData() {
     const characterData = {
       character_name: $('#character-name').html(),
@@ -44,6 +43,7 @@ const sheet = (function () {
     return characterData;
   }
 
+  // Clears all fields
   function clearData() {
     $('#character-name').html('Character Name');
     $('#character-gender').val('');
@@ -80,6 +80,7 @@ const sheet = (function () {
     $('#character-notes-text').val('');
   }
 
+  // Sets all fields to data provided from the api
   function showData(char) {
     $('#character-name').html(char.character_name);
     $('#character-gender').val(char.gender);
@@ -115,6 +116,7 @@ const sheet = (function () {
     $('#character-notes-text').val(char.notes);
   }
 
+  // Displays a character, or creates a blank template
   async function displayCharacter(event) {
     $('.character-entry').removeClass('active');
     $(this).addClass('active');
@@ -135,6 +137,7 @@ const sheet = (function () {
     }
   }
 
+  // Creates a new character
   async function createNewCharacter() {
     let charData = getData();
 
@@ -146,16 +149,15 @@ const sheet = (function () {
           'Content-Type': 'application/json',
         },
       });
-    }
-
-    if (response.ok) {
-      document.location.replace('/');
+      if (response.ok) {
+        document.location.replace('/');
+      }
     }
   }
 
+  // Updates an existing character of the given id
   async function updateCharacter(id) {
     const characterData = getData();
-    console.log(characterData);
     const response = await fetch(`/api/characters/` + id, {
       method: 'PUT',
       body: JSON.stringify(characterData),
@@ -169,27 +171,28 @@ const sheet = (function () {
     }
   }
 
-  const delButtonHandler = async (event) => {
-    if (event.target.hasAttribute('data-id')) {
-      const id = event.target.getAttribute('data-id');
+  // Deletes a character, if one exists
+  async function deleteCharacter(event) {
+    let id = getCurrentID();
 
-      const response = await fetch(`/api/projects/${id}`, {
-        method: 'DELETE',
-      });
-
-      if (response.ok) {
-        document.location.replace('/profile');
-      } else {
-        alert('Failed to delete project');
-      }
+    if (id == 'create') {
+      return;
     }
-  };
+
+    const response = await fetch(`/api/characters/${id}`, {
+      method: 'DELETE',
+    });
+
+    if (response.ok) {
+      document.location.replace('/');
+    } else {
+    }
+  }
 
   // decides whether to update a character or create a new one
-  // based on the id of the active entry
+  // based on the id of the active entry when Save Changes is clicked
   function saveChanges() {
     let id = getCurrentID();
-    console.log(id);
     if (id == 'create') {
       createNewCharacter();
     } else {
@@ -219,7 +222,8 @@ const sheet = (function () {
     $('.character-entry').on('click', displayCharacter);
     $('#character-name-edit').on('click', showNameEdit);
     $('#character-name-input').on('change', updateName);
-    $('#update-button').on('click', saveChanges);
+    $('#update-character-button').on('click', saveChanges);
+    $('#delete-character-button').on('click', deleteCharacter);
   }
 
   return {

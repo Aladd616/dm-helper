@@ -5,7 +5,7 @@
 // handlebars templates
 // =============================================
 const router = require('express').Router();
-const { Character } = require('../models');
+const { Ability, Character } = require('../models');
 const authBlock = require('../utils/auth');
 
 // ------------------------------------------------------------------------------------------------
@@ -13,10 +13,18 @@ const authBlock = require('../utils/auth');
 router.get('/', authBlock, async (req, res) => {
   try {
     const charList = await Character.findAll();
+    const abilityList = await Ability.findAll();
 
+    console.log(abilityList);
     const charData = charList.map((char) => char.get({ plain: true }));
-    console.log(charData);
-    res.render('home', { user: req.user, characters: charData });
+    const abilityData = abilityList.map((ability) =>
+      ability.get({ plain: true })
+    );
+    res.render('home', {
+      user: req.user,
+      characters: charData,
+      abilities: abilityData,
+    });
   } catch (err) {}
 });
 // ------------------------------------------------------------------------------------------------
