@@ -44,7 +44,7 @@ Character.init(
       type: DataTypes.STRING,
     },
     initiative: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
     },
     speed: {
       type: DataTypes.STRING,
@@ -71,31 +71,31 @@ Character.init(
       type: DataTypes.TEXT,
     },
     fort: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
     },
     reflex: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
     },
     will: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
     },
     str: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
     },
     dex: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
     },
     con: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
     },
     int: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
     },
     wis: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
     },
     cha: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
     },
     skills: {
       type: DataTypes.TEXT,

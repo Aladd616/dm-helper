@@ -9,7 +9,7 @@
     </ul>
   </div>
 
-    <div id='ability-view-pane' class='col-md-10'>
+  <div id='ability-view-pane' class='col-md-10'>
     <div id='ability-header' class='row d-flex justify-content-between mb-2'>
       <div class='col-md-6 d-flex'>
         <h2 id='ability-name'>Ability Name</h2>
@@ -24,7 +24,18 @@
       </div>
       <div class='col-md-3 d-flex justify-contents-end'>
         <button id='update-button' class='btn btn-info'>Save Changes</button>
-        <button id='delete-button' class='btn btn-danger'>Delete Character</button>
+        <button id='delete-button' class='btn btn-danger'>Delete Ability</button>
       </div>
     </div>
+    <div class="ability-stat-block">
+        <label for='abilities-details-text' class="form-label">Summary:</label>
+        <textarea
+          id='ability-details-text'
+          class='form-control ability-summary-field'
+        ></textarea>
+        <label for="abilities-description-text" class="form-label">Description:</label><textarea
+          id='ability-description-text'
+          class='form-control'
+        ></textarea>
     </div>
+  </div>

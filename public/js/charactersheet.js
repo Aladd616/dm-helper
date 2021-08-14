@@ -8,47 +8,38 @@ const sheet = (function () {
 
   function getData() {
     const characterData = {
-      character_Name: $('#character-name').val().trim(),
-      character_gender: $('#character-gender').val().trim(),
-      character_race: $('#character-race').val().trim(),
-      character_class: $('#character-class').val().trim(),
-      character_level: $('#character-level').val().trim(),
-      character_alignment: $('#character-alignment').val().trim(),
-      Size: $('#Size').val().trim(),
-      Type: $('#Type').val().trim(),
-      character_hit_die_text: $('#character-hit-die-text').val().trim(),
-      character_hit_points_text: $('#character-hit-points-text').val().trim(),
-      character_initiative_text: $('#character-initiative-text').val().trim(),
-      character_space_text: $('#character-space-text').val().trim(),
-      character_reach_text: $('#character-reach-text').val().trim(),
-      character_armor_class_text: $('#character-armor-class-text').val().trim(),
-      character_attack_text: $('#character-attack-text').val().trim(),
-      character_full_attack_text: $('#character-full-attack-text').val().trim(),
-      character_special_attacks_text: $('#character-special-attacks-text')
-        .val()
-        .trim(),
-      character_special_qualities_text: $('#character-special-qualities-text')
-        .val()
-        .trim(),
-      character_fortitude_save_text: $('#character-fortitude-save-text')
-        .val()
-        .trim(),
-      character_reflex_save_text: $('#character-reflex-save-text').val().trim(),
-      character_will_save_text: $('#character-will-save-text').val().trim(),
-      character_strength_text: $('#character-strength-text').val().trim(),
-      character_dexterity_text: $('#character-dexterity-text').val().trim(),
-      character_constitution_text: $('#character-constitution-text')
-        .val()
-        .trim(),
-      character_intelligence_text: $('#character-intelligence-text')
-        .val()
-        .trim(),
-      character_wisdom_text: $('#character-wisdom-text').val().trim(),
-      character_charisma_text: $('#character-charisma-text').val().trim(),
-      character_skills_text: $('#character-skills-text').val().trim(),
-      character_feats_text: $('#character-feats-text').val().trim(),
-      character_equipment_text: $('#character-equipment-text').val().trim(),
-      character_notes_text: $('#character-notes-text').val().trim(),
+      character_name: $('#character-name').html(),
+      gender: $('#character-gender').val(),
+      race: $('#character-race').val(),
+      class: $('#character-class').val(),
+      level: $('#character-level').val(),
+      alignment: $('#character-alignment').val(),
+      size: $('#character-size').val(),
+      type: $('#character-type').val(),
+      hitDie: $('#character-hit-die-text').val(),
+      hp: $('#character-hit-points-text').val(),
+      initiative: $('#character-initiative-text').val(),
+      speed: $('#character-space-text').val(),
+      space: $('#character-space-text').val(),
+      reach: $('#character-reach-text').val(),
+      armorClass: $('#character-armor-class-text').val(),
+      attacks: $('#character-attack-text').val(),
+      fullattack: $('#character-full-attack-text').val(),
+      specialattack: $('#character-special-attacks-text').val(),
+      specialqual: $('#character-special-qualities-text').val(),
+      fort: $('#character-fortitude-save-text').val(),
+      reflex: $('#character-reflex-save-text').val(),
+      will: $('#character-will-save-text').val(),
+      str: $('#character-strength-text').val(),
+      dex: $('#character-dexterity-text').val(),
+      con: $('#character-constitution-text').val(),
+      int: $('#character-intelligence-text').val(),
+      wis: $('#character-wisdom-text').val(),
+      cha: $('#character-charisma-text').val(),
+      skills: $('#character-skills-text').val(),
+      feats: $('#character-feats-text').val(),
+      equipment: $('#character-equipment-text').val(),
+      notes: $('#character-notes-text').val(),
     };
     return characterData;
   }
@@ -60,11 +51,13 @@ const sheet = (function () {
     $('#character-class').val('');
     $('#character-level').val('');
     $('#character-alignment').val('');
-    $('#Size').val('');
-    $('#Type').val('');
+    $('#character-speed').val('');
+    $('#character-size').val('');
+    $('#character-type').val('');
     $('#character-hit-die-text').val('');
     $('#character-hit-points-text').val('');
     $('#character-initiative-text').val('');
+    $('#character-speed-text').val('');
     $('#character-space-text').val('');
     $('#character-reach-text').val('');
     $('#character-armor-class-text').val('');
@@ -94,11 +87,12 @@ const sheet = (function () {
     $('#character-class').val(char.class);
     $('#character-level').val(char.level);
     $('#character-alignment').val(char.alignment);
-    $('#Size').val(char.size);
-    $('#Type').val(char.type);
+    $('#character-size').val(char.size);
+    $('#character-type').val(char.type);
     $('#character-hit-die-text').val(char.hitDie);
     $('#character-hit-points-text').val(char.hp);
     $('#character-initiative-text').val(char.initiative);
+    $('#character-speed-text').val(char.speed);
     $('#character-space-text').val(char.space);
     $('#character-reach-text').val(char.reach);
     $('#character-armor-class-text').val(char.armorClass);
@@ -142,25 +136,37 @@ const sheet = (function () {
   }
 
   async function createNewCharacter() {
-    if (character_Name) {
+    let charData = getData();
+
+    if (charData.character_name) {
       const response = await fetch(`/api/characters/`, {
         method: 'POST',
+        body: JSON.stringify(charData),
         headers: {
           'Content-Type': 'application/json',
         },
       });
     }
+
+    if (response.ok) {
+      document.location.replace('/');
+    }
   }
 
-  async function updateCharacter() {
+  async function updateCharacter(id) {
     const characterData = getData();
-
-    const response = await fetch(`/api/characters/:id`, {
+    console.log(characterData);
+    const response = await fetch(`/api/characters/` + id, {
       method: 'PUT',
+      body: JSON.stringify(characterData),
       headers: {
         'Content-Type': 'application/json',
       },
     });
+
+    if (response.ok) {
+      document.location.replace('/');
+    }
   }
 
   const delButtonHandler = async (event) => {
@@ -179,24 +185,41 @@ const sheet = (function () {
     }
   };
 
-  function getCurrentID() {
-    return $('character-entry.active').data('id');
+  // decides whether to update a character or create a new one
+  // based on the id of the active entry
+  function saveChanges() {
+    let id = getCurrentID();
+    console.log(id);
+    if (id == 'create') {
+      createNewCharacter();
+    } else {
+      updateCharacter(id);
+    }
   }
 
+  // grabs the id of the currently active entry
+  function getCurrentID() {
+    return $('.character-entry.active').data('id');
+  }
+
+  // displays the name edit box when the edit button is clicked
   function showNameEdit() {
     $('#character-name').toggleClass('d-none');
     $('#character-name-input').toggleClass('d-none');
   }
 
+  // sets the name to the input's new value, triggered on change
   function updateName() {
-    let newName = $('#character-name-input').val().trim();
+    let newName = $('#character-name-input').val();
     $('#character-name').html(newName);
   }
 
+  // sets up event handlers
   function init() {
     $('.character-entry').on('click', displayCharacter);
     $('#character-name-edit').on('click', showNameEdit);
     $('#character-name-input').on('change', updateName);
+    $('#update-button').on('click', saveChanges);
   }
 
   return {
