@@ -2,12 +2,29 @@
   <div id='ability-index-box' class='col-md-2'>
     <h2>Index</h2>
     <ul id='ability-list' class='list-group'>
+        <li class='list-group-item' data-id='create'>CREATE NEW ABILITY</li>
       {{#each abilities}}
         <li class='list-group-item' data-id='{{id}}'>{{title}}</li>
       {{/each}}
     </ul>
   </div>
 
-    <div id='character-view-pane' class='col-md-10'>
-        <h2 id="ability-name">Ability Name</h2>
+    <div id='ability-view-pane' class='col-md-10'>
+    <div id='ability-header' class='row d-flex justify-content-between mb-2'>
+      <div class='col-md-6 d-flex'>
+        <h2 id='ability-name'>Ability Name</h2>
+        <input
+          type='text'
+          id='ability-name-input'
+          class='form-control d-none'
+        />
+        <span class='d-inline-block ms-3' id='ability-name-edit'>
+          <i class='fas fa-edit'></i>
+        </span>
+      </div>
+      <div class='col-md-3 d-flex justify-contents-end'>
+        <button id='update-button' class='btn btn-info'>Save Changes</button>
+        <button id='delete-button' class='btn btn-danger'>Delete Character</button>
+      </div>
+    </div>
     </div>

@@ -53,95 +53,124 @@ const sheet = (function () {
     return characterData;
   }
 
-  function showData(char){
+  function clearData() {
+    $('#character-name').html('Character Name');
+    $('#character-gender').val('');
+    $('#character-race').val('');
+    $('#character-class').val('');
+    $('#character-level').val('');
+    $('#character-alignment').val('');
+    $('#Size').val('');
+    $('#Type').val('');
+    $('#character-hit-die-text').val('');
+    $('#character-hit-points-text').val('');
+    $('#character-initiative-text').val('');
+    $('#character-space-text').val('');
+    $('#character-reach-text').val('');
+    $('#character-armor-class-text').val('');
+    $('#character-attack-text').val('');
+    $('#character-full-attack-text').val('');
+    $('#character-special-attacks-text').val('');
+    $('#character-special-qualities-text').val('');
+    $('#character-fortitude-save-text').val('');
+    $('#character-reflex-save-text').val('');
+    $('#character-will-save-text').val('');
+    $('#character-strength-text').val('');
+    $('#character-dexterity-text').val('');
+    $('#character-constitution-text').val('');
+    $('#character-intelligence-text').val('');
+    $('#character-wisdom-text').val('');
+    $('#character-charisma-text').val('');
+    $('#character-skills-text').val('');
+    $('#character-feats-text').val('');
+    $('#character-equipment-text').val('');
+    $('#character-notes-text').val('');
+  }
 
-    
-        $('#character-name').val(char.character_name);
-        $('#character-gender').val(char.gender);
-        $('#character-race').val(char.race);
-        $('#character-class').val(char.class);
-        $('#character-level').val(char.level);
-        $('#character-alignment').val(char.alignment);
-        $('#Size').val(char.size);
-        $('#Type').val(char.type);
-        $('#character-hit-die-text').val(char.hitDie);
-        $('#character-hit-points-text').val(char.hp);
-        $('#character-initiative-text').val(char.initiative);
-        $('#character-space-text').val(char.space);
-        $('#character-reach-text').val(char.reach);
-        $('#character-armor-class-text').val(char.armorClass);
-        $('#character-attack-text').val(char.attacks);
-        $('#character-full-attack-text').val(char.fullattack);
-        $('#character-special-attacks-text')
-          .val(char.specialattack);
-        $('#character-special-qualities-text')
-          .val(char.specialqual);
-        $('#character-fortitude-save-text')
-          .val(char.fort);
-        $('#character-reflex-save-text').val(char.reflex);
-         $('#character-will-save-text').val(char.will);
-        $('#character-strength-text').val(char.str);
-        $('#character-dexterity-text').val(char.dex);
-        $('#character-constitution-text')
-          .val(char.con);
-        $('#character-intelligence-text')
-          .val(char.int);
-        $('#character-wisdom-text').val(char.wis);
-        $('#character-charisma-text').val(char.cha);
-        $('#character-skills-text').val(char.skills);
-        $('#character-feats-text').val(char.feats);
-        $('#character-equipment-text').val(char.equipment);
-        $('#character-notes-text').val(char.notes);
-      };
-  })
+  function showData(char) {
+    $('#character-name').html(char.character_name);
+    $('#character-gender').val(char.gender);
+    $('#character-race').val(char.race);
+    $('#character-class').val(char.class);
+    $('#character-level').val(char.level);
+    $('#character-alignment').val(char.alignment);
+    $('#Size').val(char.size);
+    $('#Type').val(char.type);
+    $('#character-hit-die-text').val(char.hitDie);
+    $('#character-hit-points-text').val(char.hp);
+    $('#character-initiative-text').val(char.initiative);
+    $('#character-space-text').val(char.space);
+    $('#character-reach-text').val(char.reach);
+    $('#character-armor-class-text').val(char.armorClass);
+    $('#character-attack-text').val(char.attacks);
+    $('#character-full-attack-text').val(char.fullattack);
+    $('#character-special-attacks-text').val(char.specialattack);
+    $('#character-special-qualities-text').val(char.specialqual);
+    $('#character-fortitude-save-text').val(char.fort);
+    $('#character-reflex-save-text').val(char.reflex);
+    $('#character-will-save-text').val(char.will);
+    $('#character-strength-text').val(char.str);
+    $('#character-dexterity-text').val(char.dex);
+    $('#character-constitution-text').val(char.con);
+    $('#character-intelligence-text').val(char.int);
+    $('#character-wisdom-text').val(char.wis);
+    $('#character-charisma-text').val(char.cha);
+    $('#character-skills-text').val(char.skills);
+    $('#character-feats-text').val(char.feats);
+    $('#character-equipment-text').val(char.equipment);
+    $('#character-notes-text').val(char.notes);
+  }
 
-  async function displayCharacter() {
-    const ID = $(this).data("id");
+  async function displayCharacter(event) {
+    $('.character-entry').removeClass('active');
+    $(this).addClass('active');
+    const ID = $(this).data('id');
 
-    const response = await fetch(`/api/characters/` + ID, {
+    if (ID === 'create') {
+      clearData();
+    } else {
+      const response = await fetch(`/api/characters/` + ID, {
         method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      });
-      const characterData = response.json(); 
-      
-      showData(characterData);
-  }
-
-
-
-  async function createNewCharacter () {
-
-    if (character_Name) {
-        const response = await fetch(`/api/characters/`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-
-  }
-
-  async function updateCharacter () {
-      const characterData = getData();
-
-    const response = await fetch(`/api/characters/:id`, {
-        method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
       });
+      const characterData = await response.json();
+
+      showData(characterData);
+    }
+  }
+
+  async function createNewCharacter() {
+    if (character_Name) {
+      const response = await fetch(`/api/characters/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+    }
+  }
+
+  async function updateCharacter() {
+    const characterData = getData();
+
+    const response = await fetch(`/api/characters/:id`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
   }
 
   const delButtonHandler = async (event) => {
     if (event.target.hasAttribute('data-id')) {
       const id = event.target.getAttribute('data-id');
-  
+
       const response = await fetch(`/api/projects/${id}`, {
         method: 'DELETE',
       });
-  
+
       if (response.ok) {
         document.location.replace('/profile');
       } else {
@@ -150,26 +179,30 @@ const sheet = (function () {
     }
   };
 
-      
+  function getCurrentID() {
+    return $('character-entry.active').data('id');
+  }
 
-      
+  function showNameEdit() {
+    $('#character-name').toggleClass('d-none');
+    $('#character-name-input').toggleClass('d-none');
+  }
 
-//       if (response.ok) {
-//         document.location.replace('/charactertab');
-//       } else {
-//         alert('Failed to create character');
-//       }
-//     }
-//   }
+  function updateName() {
+    let newName = $('#character-name-input').val().trim();
+    $('#character-name').html(newName);
+  }
+
   function init() {
-    $(".character-entry").on('click', displayCharacter);
+    $('.character-entry').on('click', displayCharacter);
+    $('#character-name-edit').on('click', showNameEdit);
+    $('#character-name-input').on('change', updateName);
   }
 
   return {
     init: init,
   };
 })();
-
 
 $(document).ready(function () {
   sheet.init();

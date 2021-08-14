@@ -2,6 +2,8 @@
   <div id='character-index-box' class='col-md-2'>
     <h2>Index</h2>
     <ul id='character-list' class='list-group'>
+      <li class='list-group-item character-entry' data-id='create'>CREATE NEW
+        ABILITY</li>
       {{#each characters}}
         <li
           class='list-group-item character-entry'
@@ -12,10 +14,23 @@
   </div>
 
   <div id='character-view-pane' class='col-md-10'>
-    <h2 id='character-name'>Character Name</h2>
-    <div class='d-inline-block' id='character-name-edit'><i
-        class='fa-regular fa-pen-to-square'
-      ></i></div>
+    <div id='character-header' class='row d-flex justify-content-between mb-2'>
+      <div class='col-md-6 d-flex'>
+        <h2 id='character-name'>Character Name</h2>
+        <input
+          type='text'
+          id='character-name-input'
+          class='form-control d-none'
+        />
+        <span class='d-inline-block ms-3' id='character-name-edit'>
+          <i class='fas fa-edit'></i>
+        </span>
+      </div>
+      <div class='col-md-3 d-flex justify-contents-end'>
+        <button id='update-button' class='btn btn-info'>Save Changes</button>
+        <button id='delete-button' class='btn btn-danger'>Delete Character</button>
+      </div>
+    </div>
     <div class='character-stat-block'>
       <div class='input-group mb-1 input-group-sm'>
         <input
@@ -159,3 +174,4 @@
     </div>
   </div>
 </div>
+<script src='./js/charactersheet.js'></script>
