@@ -1,6 +1,11 @@
 <div class='row'>
-  <div id='character-list' class='col-md-2'>
+  <div id='character-index-box' class='col-md-2'>
     <h2>Index</h2>
+    <ul id='character-list' class='list-group'>
+      {{#each characters}}
+        <li class='list-group-item' data-id='{{id}}'>{{name}}</li>
+      {{/each}}
+    </ul>
   </div>
 
   <div id='character-view-pane' class='col-md-10'>
