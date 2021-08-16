@@ -66,3 +66,14 @@ Dice Tab
   font-size: 1.5em;
   font-family: 'Patrick Hand', cursive;
 }
+
+/* =============================================
+Ability Tab
+============================================= */
+#ability-details-text {
+  min-height: 10vh;
+}
+
+#ability-description-text {
+  min-height: 50vh;
+}
