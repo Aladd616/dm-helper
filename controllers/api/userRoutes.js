@@ -32,7 +32,6 @@ router.get('/:id', async (req, res) => {
 });
 
 // ------------------------------------------------------------------------------------------------
-
 // Creates a new user using /api/users/
 router.post(
   '/',
@@ -40,19 +39,7 @@ router.post(
     successRedirect: '/',
     failureRedirect: '/signup',
   }),
-  async (req, res, next) => {
-    // console.log(req.body);
-    // try {
-    //   const newUser = await User.create({
-    //     name: req.body.name,
-    //     email: req.body.email,
-    //     password: req.body.password,
-    //     isDM: req.body.isDM,
-    //   });
-    // } catch (err) {
-    //   res.status(500).json(err);
-    // }
-  }
+  async (req, res, next) => {}
 );
 
 // ------------------------------------------------------------------------------------------------

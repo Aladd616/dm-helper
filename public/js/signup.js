@@ -4,6 +4,8 @@
 // Handles sign up procedures
 // ====================================================
 const signup = (function () {
+  // grabs data from the necessary fields
+  // TODO: Actually do something with the password check field
   function getData() {
     let name = $('#name-field').val().trim();
     let email = $('#username-field').val().trim();
@@ -13,6 +15,7 @@ const signup = (function () {
     return { name: name, email: email, password: password, isDM: dm };
   }
 
+  // Submits the data to the server for account creation
   async function submit(event) {
     event.preventDefault();
     let userData = getData();
@@ -33,6 +36,7 @@ const signup = (function () {
     }
   }
 
+  // Sets up event handlers
   function init() {
     $('#signup-button').on('click', submit);
   }
@@ -42,6 +46,7 @@ const signup = (function () {
   };
 })();
 
+// Fires the signup script only when ready
 $(document).ready(function () {
   signup.init();
 });

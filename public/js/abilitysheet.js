@@ -143,6 +143,7 @@ const abilitysheet = (function () {
   };
 })();
 
+// Fire the ability script once the page loads
 $(document).ready(function () {
   abilitysheet.init();
 });

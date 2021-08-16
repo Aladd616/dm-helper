@@ -231,6 +231,7 @@ const sheet = (function () {
   };
 })();
 
+// Fire the character sheet script once the page loads
 $(document).ready(function () {
   sheet.init();
 });

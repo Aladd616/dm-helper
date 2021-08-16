@@ -49,7 +49,7 @@ router.get('/login', async (req, res) => {
 // ------------------------------------------------------------------------------------------------
 
 // ------------------------------------------------------------------------------------------------
-// Gets the login page
+// Gets the signup page
 router.get('/signup', async (req, res) => {
   if (req.session.loggedIn) {
     res.redirect('/');

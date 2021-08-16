@@ -36,9 +36,8 @@ router.get('/:id', async (req, res) => {
 // ------------------------------------------------------------------------------------------------
 
 // ------------------------------------------------------------------------------------------------
+// create a new ability
 router.post('/', async (req, res) => {
-  // create a new ability
-
   try {
     const abilityData = await Ability.create(req.body);
     res.status(200).json(abilityData);
@@ -49,6 +48,7 @@ router.post('/', async (req, res) => {
 // ------------------------------------------------------------------------------------------------
 
 // ------------------------------------------------------------------------------------------------
+// Updates a character by ID number
 router.put('/:id', async (req, res) => {
   try {
     const ability = await Ability.update(req.body, {
@@ -65,8 +65,8 @@ router.put('/:id', async (req, res) => {
 // ------------------------------------------------------------------------------------------------
 
 // ------------------------------------------------------------------------------------------------
+// delete an ability by its `id`
 router.delete('/:id', async (req, res) => {
-  // delete an ability by its `id`
   try {
     const abilityData = await Ability.destroy({
       where: {
