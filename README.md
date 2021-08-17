@@ -51,7 +51,7 @@ node server.js
 
 from the app's directory.
 
-A live demonstration of the app's functionality can be found [here](https://bear-dm-helper.herokuapp.com/).
+A live demonstration of the app's functionality can be found [here](https://mysterious-oasis-83726.herokuapp.com/).
 
 ## License
 
